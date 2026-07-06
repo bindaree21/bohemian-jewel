@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bohemian Jewel — Handmade Jewellery</title>
+<meta name="description" content="Bohemian Jewel — handmade, small-batch jewellery. Each piece made by hand.">
+
+<!-- ============================================================
+     BOHEMIAN JEWEL — bespoke showcase website
+     Everything is in this one file. To edit, look for the
+     comments in CAPITALS (e.g. "EDIT ME"). See the README
+     for step-by-step instructions.
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* ---------- COLOURS & FONTS (change your brand look here) ---------- */
+  :root{
+    --cream:   #faf7f2;   /* page background */
+    --charcoal:#2b2622;   /* main text */
+    --gold:    #b08d57;   /* accent / buttons */
+    --soft:    #efe8dd;   /* placeholder tone */
+    --muted:   #8a8078;   /* secondary text */
+    --heading: 'Cormorant Garamond', Georgia, serif;
+    --body:    'Jost', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:var(--body);
+    color:var(--charcoal);
+    background:var(--cream);
+    line-height:1.7;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{ font-family:var(--heading); font-weight:500; line-height:1.15; }
+  a{ color:inherit; text-decoration:none; }
+  img{ display:block; max-width:100%; }
+  section{ padding:6rem 1.5rem; }
+  .wrap{ max-width:1100px; margin:0 auto; }
+
+  .eyebrow{
+    font-size:.72rem; letter-spacing:.32em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:1rem;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-block; font-family:var(--body); font-size:.78rem;
+    letter-spacing:.18em; text-transform:uppercase; cursor:pointer;
+    padding:.9rem 2rem; border:1px solid var(--gold); color:var(--gold);
+    background:transparent; transition:all .3s ease;
+  }
+  .btn:hover{ background:var(--gold); color:#fff; }
+  .btn-solid{ background:var(--gold); color:#fff; }
+  .btn-solid:hover{ background:var(--charcoal); border-color:var(--charcoal); }
+
+  /* ---------- Navigation ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,247,242,.9); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--soft);
+  }
+  nav{
+    max-width:1100px; margin:0 auto; padding:1.1rem 1.5rem;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{ font-family:var(--heading); font-size:1.5rem; letter-spacing:.05em; }
+  .logo span{ color:var(--gold); }
+  .nav-links{ display:flex; gap:2rem; }
+  .nav-links a{ font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); transition:color .2s; }
+  .nav-links a:hover{ color:var(--charcoal); }
+  @media(max-width:640px){ .nav-links{ display:none; } }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:82vh; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; text-align:center;
+    padding:4rem 1.5rem;
+    background:linear-gradient(180deg,#f3ece2 0%, var(--cream) 100%);
+  }
+  .hero h1{ font-size:clamp(2.8rem,7vw,5rem); margin:.5rem 0 1.2rem; }
+  .hero p{ max-width:520px; color:var(--muted); font-size:1.05rem; margin-bottom:2rem; }
+
+  /* ---------- Collection grid ---------- */
+  .section-head{ text-align:center; margin-bottom:3.5rem; }
+  .section-head h2{ font-size:clamp(2rem,5vw,3rem); }
+  .grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:2.5rem 2rem; }
+  @media(max-width:820px){ .grid{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:520px){ .grid{ grid-template-columns:1fr; } }
+
+  .piece{ text-align:center; }
+  .piece .photo{
+    aspect-ratio:4/5; width:100%; object-fit:cover;
+    background:var(--soft); margin-bottom:1.1rem;
+  }
+  /* placeholder shown until you add a real photo */
+  .placeholder{
+    aspect-ratio:4/5; width:100%; margin-bottom:1.1rem;
+    background:var(--soft);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--muted); font-size:.75rem; letter-spacing:.15em;
+    text-transform:uppercase; text-align:center; padding:1rem;
+  }
+  .piece h3{ font-size:1.5rem; margin-bottom:.2rem; }
+  .piece .meta{ color:var(--muted); font-size:.85rem; margin-bottom:.6rem; }
+  .piece .price{ font-size:.95rem; letter-spacing:.05em; margin-bottom:.9rem; }
+  .piece a.enquire{
+    font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--gold); border-bottom:1px solid var(--gold); padding-bottom:2px;
+  }
+
+  /* ---------- About ---------- */
+  .about{ background:#f3ece2; }
+  .about .wrap{ display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+  @media(max-width:760px){ .about .wrap{ grid-template-columns:1fr; gap:2.5rem; } }
+  .about .portrait{ aspect-ratio:1/1; background:var(--soft); }
+  .about h2{ font-size:clamp(2rem,5vw,3rem); margin-bottom:1.2rem; }
+  .about p{ color:#5a524b; margin-bottom:1rem; }
+
+  /* ---------- Enquire / contact ---------- */
+  .enquire-section{ text-align:center; }
+  .enquire-section p.lead{ max-width:520px; margin:0 auto 2.5rem; color:var(--muted); }
+  form{ max-width:520px; margin:0 auto; text-align:left; }
+  label{ display:block; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:1.2rem 0 .4rem; }
+  input,textarea{
+    width:100%; font-family:var(--body); font-size:1rem; color:var(--charcoal);
+    padding:.8rem 1rem; border:1px solid #ddd3c6; background:#fff; border-radius:2px;
+  }
+  input:focus,textarea:focus{ outline:none; border-color:var(--gold); }
+  form .btn{ margin-top:1.8rem; width:100%; }
+
+  /* ---------- Newsletter ---------- */
+  .newsletter{ background:var(--charcoal); color:#f3ece2; text-align:center; }
+  .newsletter h2{ font-size:clamp(1.8rem,4vw,2.6rem); margin-bottom:.8rem; color:#fff; }
+  .newsletter p{ color:#c9beb2; max-width:460px; margin:0 auto 2rem; }
+  .newsletter form{ display:flex; gap:.6rem; max-width:440px; }
+  .newsletter input{ background:transparent; border-color:#5a524b; color:#fff; }
+  .newsletter input::placeholder{ color:#9a9088; }
+  @media(max-width:480px){ .newsletter form{ flex-direction:column; } }
+
+  /* ---------- Footer ---------- */
+  footer{ background:#211d1a; color:#9a9088; text-align:center; padding:3rem 1.5rem; font-size:.85rem; }
+  footer .logo{ color:#f3ece2; margin-bottom:1rem; }
+  footer .socials{ margin:1rem 0; display:flex; gap:1.5rem; justify-content:center; }
+  footer .socials a{ letter-spacing:.14em; text-transform:uppercase; font-size:.72rem; color:#c9beb2; }
+  footer .socials a:hover{ color:#fff; }
+</style>
+</head>
+<body>
+
+<!-- ============================= NAV ============================= -->
+<header>
+  <nav>
+    <!-- EDIT ME: your brand name -->
+    <div class="logo">Bohemian <span>Jewel</span></div>
+    <div class="nav-links">
+      <a href="#collection">Collection</a>
+      <a href="#about">About</a>
+      <a href="#enquire">Enquire</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ============================= HERO ============================= -->
+<section class="hero">
+  <p class="eyebrow">Handmade &nbsp;·&nbsp; Small batch</p>
+  <!-- EDIT ME: your headline and tagline -->
+  <h1>Jewellery made<br>by hand, for you</h1>
+  <p>Small-batch pieces crafted with care. Each one is one of a kind — made to be worn, kept, and loved.</p>
+  <a href="#collection" class="btn btn-solid">View the collection</a>
+</section>
+
+<!-- ========================== COLLECTION ========================== -->
+<section id="collection">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">The Collection</p>
+      <h2>Latest pieces</h2>
+    </div>
+
+    <div class="grid">
+      <!-- ===========================================================
+           EACH PIECE = one block below. To add a real photo, replace
+           the <div class="placeholder">...</div> with:
+           <img class="photo" src="images/your-photo.jpg" alt="Piece name">
+           Copy a whole <article> block to add more pieces.
+           =========================================================== -->
+
+      <article class="piece">
+        <div class="placeholder">Your photo here</div>
+        <h3>Willow Earrings</h3>          <!-- EDIT ME: piece name -->
+        <p class="meta">Sterling silver · handmade</p> <!-- EDIT ME: materials -->
+        <p class="price">$68</p>          <!-- EDIT ME: price (or delete this line to hide) -->
+        <a class="enquire" href="#enquire">Enquire</a>
+      </article>
+
+      <article class="piece">
+        <div class="placeholder">Your photo here</div>
+        <h3>Ember Necklace</h3>
+        <p class="meta">Gold-fill · freshwater pearl</p>
+        <p class="price">$120</p>
+        <a class="enquire" href="#enquire">Enquire</a>
+      </article>
+
+      <article class="piece">
+        <div class="placeholder">Your photo here</div>
+        <h3>Stone Ring</h3>
+        <p class="meta">Sterling silver · labradorite</p>
+        <p class="price">$95</p>
+        <a class="enquire" href="#enquire">Enquire</a>
+      </article>
+
+      <article class="piece">
+        <div class="placeholder">Your photo here</div>
+        <h3>Meadow Studs</h3>
+        <p class="meta">14k gold-fill</p>
+        <p class="price">$54</p>
+        <a class="enquire" href="#enquire">Enquire</a>
+      </article>
+
+      <article class="piece">
+        <div class="placeholder">Your photo here</div>
+        <h3>Tide Bracelet</h3>
+        <p class="meta">Sterling silver · handmade</p>
+        <p class="price">$78</p>
+        <a class="enquire" href="#enquire">Enquire</a>
+      </article>
+
+      <article class="piece">
+        <div class="placeholder">Your photo here</div>
+        <h3>Dawn Pendant</h3>
+        <p class="meta">Gold-fill · moonstone</p>
+        <p class="price">$110</p>
+        <a class="enquire" href="#enquire">Enquire</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= ABOUT ============================= -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="portrait"><!-- EDIT ME: replace with <img src="images/portrait.jpg" alt="Maker"> --></div>
+    <div>
+      <p class="eyebrow">The Maker</p>
+      <h2>Made by hand,<br>with a story</h2>
+      <!-- EDIT ME: your story -->
+      <p>Bohemian Jewel began at a small workbench, with a love of natural stones and quiet, wearable design. Every piece is made by hand in small batches — no two are exactly alike.</p>
+      <p>I care about pieces that last: honest materials, thoughtful details, and jewellery that feels personal. Thank you for being here.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ENQUIRE ============================ -->
+<section class="enquire-section" id="enquire">
+  <div class="wrap">
+    <p class="eyebrow">Get in touch</p>
+    <h2 style="font-size:clamp(2rem,5vw,3rem);margin-bottom:1rem;">Enquire about a piece</h2>
+    <p class="lead">Interested in a piece, or want something custom? Send a note and I'll get back to you personally.</p>
+
+    <!-- EDIT ME: change the email below to your own address.
+         This opens the visitor's email app pre-filled. To collect
+         enquiries automatically instead, see the README (Formspree). -->
+    <form action="mailto:hello@bohemianjewel.com" method="post" enctype="text/plain">
+      <label for="name">Your name</label>
+      <input id="name" name="name" type="text" required>
+
+      <label for="email">Your email</label>
+      <input id="email" name="email" type="email" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" placeholder="Which piece are you interested in?" required></textarea>
+
+      <button type="submit" class="btn">Send enquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- =========================== NEWSLETTER =========================== -->
+<section class="newsletter">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--gold)">Stay in touch</p>
+    <h2>Be first to see new pieces</h2>
+    <p>Join the list for early access to new collections and one-of-a-kind pieces.</p>
+    <!-- EDIT ME: connect this to your email tool later (see README) -->
+    <form onsubmit="alert('Thanks! Connect this form to your email tool — see the README.');return false;">
+      <input type="email" placeholder="Your email address" required>
+      <button type="submit" class="btn btn-solid">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============================= FOOTER ============================= -->
+<footer>
+  <div class="logo" style="font-family:var(--heading);font-size:1.4rem;">Bohemian Jewel</div>
+  <div class="socials">
+    <!-- EDIT ME: your real social links -->
+    <a href="#" target="_blank" rel="noopener">Instagram</a>
+    <a href="#" target="_blank" rel="noopener">Pinterest</a>
+  </div>
+  <p>© 2026 Bohemian Jewel · Handmade with care</p>
+</footer>
+
+</body>
+</html>
