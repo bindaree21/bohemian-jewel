@@ -117,12 +117,22 @@
   }
 
   /* ---------- About ---------- */
-  .about{ background:#f3ece2; }
-  .about .wrap{ display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
-  @media(max-width:760px){ .about .wrap{ grid-template-columns:1fr; gap:2.5rem; } }
-  .about .portrait{ aspect-ratio:1/1; background:var(--soft); }
-  .about h2{ font-size:clamp(2rem,5vw,3rem); margin-bottom:1.2rem; }
-  .about p{ color:#5a524b; margin-bottom:1rem; }
+  .about{
+    position:relative;
+    min-height:80vh;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    /* EDIT ME: add images/plaster_sun.png — this is the full-section background */
+    background:#f3ece2 url('images/plaster_sun.png') center/cover no-repeat;
+  }
+  .about::before{
+    /* dark overlay so the text stays readable over the photo */
+    content:''; position:absolute; inset:0;
+    background:rgba(43,38,34,.55);
+  }
+  .about .wrap{ position:relative; z-index:1; max-width:640px; }
+  .about h2{ font-size:clamp(2rem,5vw,3rem); margin-bottom:1.2rem; color:#fff; }
+  .about p{ color:#efe8dd; margin-bottom:1rem; }
 
   /* ---------- Enquire / contact ---------- */
   .enquire-section{ text-align:center; }
@@ -161,9 +171,7 @@
     <!-- EDIT ME: your brand name -->
     <div class="logo">Bohemian <span>Jewel</span></div>
     <div class="nav-links">
-      <a href="#collection">Collection</a>
       <a href="#about">About</a>
-      <a href="#enquire">Enquire</a>
     </div>
   </nav>
 </header>
@@ -174,11 +182,13 @@
   <!-- EDIT ME: your headline and tagline -->
   <h1>Jewellery made<br>by hand, for you</h1>
   <p>Small-batch pieces crafted with care. Each one is one of a kind — made to be worn, kept, and loved.</p>
-  <a href="#collection" class="btn btn-solid">View the collection</a>
+  <a href="#about" class="btn btn-solid">Learn more</a>
 </section>
 
-<!-- ========================== COLLECTION ========================== -->
-<section id="collection">
+<!-- ========================== COLLECTION ==========================
+     Hidden for now (coming soon). Remove the "hidden" attribute below
+     to bring this section back. ================================= -->
+<section id="collection" hidden>
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">The Collection</p>
@@ -247,19 +257,18 @@
 <!-- ============================= ABOUT ============================= -->
 <section class="about" id="about">
   <div class="wrap">
-    <div class="portrait"><!-- EDIT ME: replace with <img src="images/portrait.jpg" alt="Maker"> --></div>
-    <div>
-      <p class="eyebrow">The Maker</p>
-      <h2>Made by hand,<br>with a story</h2>
-      <!-- EDIT ME: your story -->
-      <p>Bohemian Jewel began at a small workbench, with a love of natural stones and quiet, wearable design. Every piece is made by hand in small batches — no two are exactly alike.</p>
-      <p>I care about pieces that last: honest materials, thoughtful details, and jewellery that feels personal. Thank you for being here.</p>
-    </div>
+    <p class="eyebrow">The Maker</p>
+    <h2>Made by hand,<br>with a story</h2>
+    <!-- EDIT ME: your story -->
+    <p>Bohemian Jewel began at a small workbench, with a love of natural stones and quiet, wearable design. Every piece is made by hand in small batches — no two are exactly alike.</p>
+    <p>I care about pieces that last: honest materials, thoughtful details, and jewellery that feels personal. Thank you for being here.</p>
   </div>
 </section>
 
-<!-- ============================ ENQUIRE ============================ -->
-<section class="enquire-section" id="enquire">
+<!-- ============================ ENQUIRE ============================
+     Hidden for now (coming soon). Remove the "hidden" attribute below
+     to bring this section back. ================================= -->
+<section class="enquire-section" id="enquire" hidden>
   <div class="wrap">
     <p class="eyebrow">Get in touch</p>
     <h2 style="font-size:clamp(2rem,5vw,3rem);margin-bottom:1rem;">Enquire about a piece</h2>
