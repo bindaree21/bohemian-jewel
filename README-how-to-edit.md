@@ -44,9 +44,9 @@ Near the top, in the `:root { }` section, change the colour codes (e.g. `--gold:
 
 ## Making the contact form actually reach you
 
-Right now the **Enquire** form opens the visitor's own email app addressed to `hello@bohemianjewel.com`. Two things to do:
+The visible **connect** link opens the visitor's email app addressed to `hello@bohemiajewel.com`. The **Enquire** form is currently hidden and uses the same address when enabled. To update it later:
 
-1. Change that address to your real email (find `mailto:hello@bohemianjewel.com`).
+1. Find `mailto:hello@bohemiajewel.com` and update both the contact link and the hidden form.
 2. **Better option for later:** sign up free at **formspree.io**, and they'll give you a line to paste in so enquiries land in your inbox automatically without the visitor needing an email app. I can set this up with you when you're ready.
 
 The **newsletter** box is a placeholder for now — when you're ready to collect emails properly, a free tool like **Mailchimp** or **Beehiiv** gives you a form to drop in. Just ask and I'll wire it up.

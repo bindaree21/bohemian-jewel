@@ -30,6 +30,7 @@
   }
 
   *{ box-sizing:border-box; margin:0; padding:0; }
+  [hidden]{ display:none !important; }
   html{ scroll-behavior:smooth; }
   body{
     font-family:var(--body);
@@ -119,11 +120,11 @@
   /* ---------- About ---------- */
   .about{
     position:relative;
-    min-height:80vh;
+    min-height:100vh;
     display:flex; align-items:center; justify-content:center;
     text-align:center;
-    /* EDIT ME: add images/plaster_sun.png — this is the full-section background */
-    background:#f3ece2 url('images/plaster_sun.png') center/cover no-repeat;
+    /* EDIT ME: images/sun-cropped.jpg is the optimised full-section background. */
+    background:#f3ece2 url('images/sun-cropped.jpg') center/cover no-repeat;
   }
   .about::before{
     /* dark overlay so the text stays readable over the photo */
@@ -132,7 +133,11 @@
   }
   .about .wrap{ position:relative; z-index:1; max-width:640px; }
   .about h2{ font-size:clamp(2rem,5vw,3rem); margin-bottom:1.2rem; color:#fff; }
+  .about .coming-soon{ font-size:clamp(1rem,2.5vw,1.5rem); }
   .about p{ color:#efe8dd; margin-bottom:1rem; }
+  .about .story{ margin:3rem 0; }
+  .about .contact{ margin-top:0; display:flex; justify-content:center; gap:1.5rem; }
+  .about .contact a{ display:inline-block; padding:.5rem 0; text-decoration:none; }
 
   /* ---------- Enquire / contact ---------- */
   .enquire-section{ text-align:center; }
@@ -165,8 +170,10 @@
 </head>
 <body>
 
-<!-- ============================= NAV ============================= -->
-<header>
+<!-- ============================= NAV =============================
+     Hidden for now (coming soon — only the About section shows).
+     Remove the "hidden" attribute below to bring it back. -->
+<header hidden>
   <nav>
     <!-- EDIT ME: your brand name -->
     <div class="logo">Bohemian <span>Jewel</span></div>
@@ -176,8 +183,10 @@
   </nav>
 </header>
 
-<!-- ============================= HERO ============================= -->
-<section class="hero">
+<!-- ============================= HERO =============================
+     Hidden for now (coming soon — only the About section shows).
+     Remove the "hidden" attribute below to bring it back. -->
+<section class="hero" hidden>
   <p class="eyebrow">Handmade &nbsp;·&nbsp; Small batch</p>
   <!-- EDIT ME: your headline and tagline -->
   <h1>Jewellery made<br>by hand, for you</h1>
@@ -258,10 +267,18 @@
 <section class="about" id="about">
   <div class="wrap">
     <p class="eyebrow">The Maker</p>
-    <h2>Made by hand,<br>with a story</h2>
-    <!-- EDIT ME: your story -->
-    <p>Bohemian Jewel began at a small workbench, with a love of natural stones and quiet, wearable design. Every piece is made by hand in small batches — no two are exactly alike.</p>
-    <p>I care about pieces that last: honest materials, thoughtful details, and jewellery that feels personal. Thank you for being here.</p>
+    <!-- EDIT ME: your titles and definitions -->
+    <h2>Bohemia</h2>
+    <p>(n.) socially unconventional artistic people and the areas they frequent, viewed collectively.</p>
+    <h2>Jewel</h2>
+    <p>(n.) better or more beautiful more special than other things.</p>
+    <p class="story">You are the SUN - life, love and devotion. Wearable stories of creativity, nature and symbolism; Jewels made to be worn Forever. Created and made in Byron Bay.</p>
+    <h2 class="coming-soon">COMING SOON</h2>
+    <p class="contact">
+      <a href="https://www.instagram.com/bohemiajewel/" target="_blank" rel="noopener noreferrer">instagram</a>
+      <a href="https://www.pinterest.com/bohemiajewel/" target="_blank" rel="noopener noreferrer">pinterest</a>
+      <a href="mailto:hello@bohemiajewel.com">connect</a>
+    </p>
   </div>
 </section>
 
@@ -277,7 +294,7 @@
     <!-- EDIT ME: change the email below to your own address.
          This opens the visitor's email app pre-filled. To collect
          enquiries automatically instead, see the README (Formspree). -->
-    <form action="mailto:hello@bohemianjewel.com" method="post" enctype="text/plain">
+    <form action="mailto:hello@bohemiajewel.com" method="post" enctype="text/plain">
       <label for="name">Your name</label>
       <input id="name" name="name" type="text" required>
 
@@ -292,8 +309,10 @@
   </div>
 </section>
 
-<!-- =========================== NEWSLETTER =========================== -->
-<section class="newsletter">
+<!-- =========================== NEWSLETTER ===========================
+     Hidden for now (coming soon — only the About section shows).
+     Remove the "hidden" attribute below to bring it back. -->
+<section class="newsletter" hidden>
   <div class="wrap">
     <p class="eyebrow" style="color:var(--gold)">Stay in touch</p>
     <h2>Be first to see new pieces</h2>
@@ -306,8 +325,10 @@
   </div>
 </section>
 
-<!-- ============================= FOOTER ============================= -->
-<footer>
+<!-- ============================= FOOTER =============================
+     Hidden for now (coming soon — only the About section shows).
+     Remove the "hidden" attribute below to bring it back. -->
+<footer hidden>
   <div class="logo" style="font-family:var(--heading);font-size:1.4rem;">Bohemian Jewel</div>
   <div class="socials">
     <!-- EDIT ME: your real social links -->
